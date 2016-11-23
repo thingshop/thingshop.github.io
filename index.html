@@ -30,12 +30,12 @@ canvas {
     text-align: center;
     width: 540px;
     outline: none;
-    background: none;
+    background: 'white';
     border-style:solid;
     border: none;
     color: black;
     font-weight: 100;
-    border: 3px solid black;
+    border: 1px solid black;
   }
   input[type=submit] {
     font-weight: 100;
@@ -109,7 +109,7 @@ function getPattern(pixelSize, bandWidth, offset, color) {
   var width = height = pixelSize;
 
   bandWidth = bandWidth % 1;
-  offset = 1;
+  offset = offset % 1;
 
   var pattern = document.createElement('canvas');
   var ctx = pattern.getContext('2d');
