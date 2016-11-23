@@ -20,11 +20,15 @@ canvas {
   width: 100%;
   height: 100%;
 }
+.spacer {
+  width: 400px;
+}
   input[type=email] {
     font-size: 3em;
     padding: 5px;
+    margin-left: 50px;
     text-align: center;
-    width: 440px;
+    width: 540px;
     outline: none;
     background: none;
     border-style:solid;
@@ -35,15 +39,11 @@ canvas {
   }
   input[type=submit] {
     font-weight: 100;
-    margin-left: 10px;
-    width: 147px;
     outline: none;
-    border: 1px solid #black;
-    font-size: 1.2em;
+    font-size: 2.2em;
     background: none;
     outline: none;
-    border: none;
-    height: 47px;
+    border: none;/
   }
   ::-webkit-input-placeholder {
    color: black;
@@ -74,8 +74,8 @@ canvas {
 <body>
   <div class="form">
     <form action="http://www.thinglogs.com/api/email" method="POST">
+      <span class="spacer">&nbsp</span>
       <input type="email" placeholder="connect with us" id="Email" onblur="connectPrompt()" onfocus="emailPrompt()">
-      <br>
       <input type="submit" value="↵">
     </form>
   </div>
@@ -89,6 +89,7 @@ canvas {
   // http://www.tophtucker.com/
 
   function emailPrompt() {
+
     document.getElementById('Email').placeholder='email';
   }
 
@@ -139,13 +140,13 @@ function render(t, ctx) {
   ctx.fillStyle = ctx.createPattern(getPattern(px, .1, t/1000 + .67, "#0000FF"), "repeat");
   ctx.fillRect(0,0,innerWidth,innerHeight);
 
-  ctx.font = "800 400px helvetica, arial, sans-serif";
+  ctx.font = "800 300px helvetica, arial, sans-serif";
   ctx.fillStyle = ctx.createPattern(getPattern(px, .2, t/1000, "#0000FF"), "repeat");
-  ctx.fillText("Thing", t/30 % innerWidth, innerHeight*.33);
+  ctx.fillText("t/hings", t/30 % innerWidth, innerHeight*.33);
 
-  ctx.font = "800 350px helvetica, arial, sans-serif";
-  ctx.fillStyle = ctx.createPattern(getPattern(px, .2, t/1000 + .33, "#00FF00"), "repeat");
-  ctx.fillText("Shop", innerWidth - (t/20 % innerWidth), innerHeight*.5);
+  // ctx.font = "800 350px helvetica, arial, sans-serif";
+  // ctx.fillStyle = ctx.createPattern(getPattern(px, .2, t/1000 + .33, "#00FF00"), "repeat");
+  // ctx.fillText("Shop", innerWidth - (t/20 % innerWidth), innerHeight*.5);
 
   ctx.font = "800 175px helvetica, arial, sans-serif";
   ctx.fillStyle = ctx.createPattern(getPattern(px, .2, t/1000 + .67, "#FF0000"), "repeat");
