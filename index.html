@@ -13,32 +13,52 @@
   height: 100%;
   text-align: center;
 }
-
+h1 {
+  
+}
 canvas {
   width: 100%;
   height: 100%;
 }
   input[type=email] {
-    font-size: 1em;
+    font-size: 3em;
     padding: 5px;
     text-align: center;
-    height: 2em;
-    margin-left: 10px;
-    width: 20em;
-    /*border-radius: 5px;*/
-    border: 3px solid black;
+    width: 440px;
     outline: none;
+    background: none;
+    border-style:solid;
+    border: none;
+    color: black;
+    font-weight: 100;
+    border: 3px solid black;
   }
   input[type=submit] {
+    font-weight: 100;
     margin-left: 10px;
-    width: 47px;
+    width: 147px;
     outline: none;
-    border: 0px solid #2971A0;
+    border: 1px solid #black;
     font-size: 1.2em;
-    background: black;
-    color:white;
+    background: none;
+    outline: none;
+    border: none;
     height: 47px;
-    border-radius: 50px;
+  }
+  ::-webkit-input-placeholder {
+   color: black;
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+    color: black;  
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: black;  
+  }
+
+  :-ms-input-placeholder {  
+    color: black;  
   }
   .form {
     height: 100px;
@@ -53,9 +73,10 @@ canvas {
 
 <body>
   <div class="form">
-    <form>
-      <input type="email" placeholder="Email">
-      <input type="submit" value="→">
+    <form action="http://www.thinglogs.com/api/email" method="POST">
+      <input type="email" placeholder="connect with us" id="Email" onblur="connectPrompt()" onfocus="emailPrompt()">
+      <br>
+      <input type="submit" value="↵">
     </form>
   </div>
 </body>
@@ -67,14 +88,21 @@ canvas {
   // https://bl.ocks.org/tophtucker/da72269b4269af609f9f
   // http://www.tophtucker.com/
 
+  function emailPrompt() {
+    document.getElementById('Email').placeholder='email';
+  }
+
+  function connectPrompt() {
+    document.getElementById('Email').placeholder='connect with us';
+  }
 
   var mouse, mouseScale = d3.scale.linear()
   .domain([0,innerWidth])
   .range([3,45]);
 
-document.onmousemove = function(e) {
-  mouse = [e.clientX, e.clientY];
-}
+  document.onmousemove = function(e) {
+    mouse = [e.clientX, e.clientY];
+  }
 
 function getPattern(pixelSize, bandWidth, offset, color) {
   var width = height = pixelSize;
@@ -131,7 +159,6 @@ function init() {
   canvas.setAttribute('width', innerWidth);
   canvas.setAttribute('height', innerHeight);
 
-  // Add our demo to the HTML
   document.body.appendChild(canvas);
 
   ctx.font = "800 82px helvetica, arial, sans-serif";
